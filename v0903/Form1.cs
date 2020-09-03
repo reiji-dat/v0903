@@ -32,21 +32,27 @@ namespace v0903
             label1.Left += vx;
             label1.Top += vy;
 
+            bool pien = false;
+
             if(label1.Left <= 0)
             {
                 vx = Math.Abs(vx);
+                label1.Text = "(／・ω・)／";
             }
             if(label1.Top <= 0)
             {
                 vy = Math.Abs(vy);
+                label1.Text = "／(・ω・)＼";
             }
             if(label1.Right >= ClientSize.Width)
             {
                 vx = -Math.Abs(vx);
+                label1.Text = "＼(・ω・＼)";
             }
             if(label1.Bottom >= ClientSize.Height)
             {
                 vy = -Math.Abs(vy);
+                label1.Text = "＼(・ω・)／";
             }
 
             Point mp = MousePosition;
@@ -56,8 +62,20 @@ namespace v0903
                 &&  mp.Y > label1.Top
                 &&  mp.Y < label1.Bottom)
             {
-                timer1.Enabled = false;
-                label1.Text = "(´；ω；`)ｳｩｩ";
+                if (!pien)
+                {
+                    timer1.Enabled = false;
+                    label1.Text = "(´；ω；`)ｳｩｩ";
+                    pien = true;
+                    MessageBox.Show("ぴえん");
+                    timer1.Enabled = true;
+                    vx = rand.Next(-20, 21);
+                    vy = rand.Next(-20, 21);
+                    label1.Left = rand.Next(ClientSize.Width - label1.Width);
+                    label1.Top = rand.Next(ClientSize.Height - label1.Height);
+                    label1.Text = "＼(・ω・)／";
+
+                }
             }
         }
     }
