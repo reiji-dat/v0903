@@ -46,6 +46,7 @@ namespace v0903
 
         private void timer1_Tick(object sender, EventArgs e)
         {
+            label1.Text = "" + score;
             for (int i = 0; i < nin; i++)
             {
                 labels[i].Left += vx[i];
